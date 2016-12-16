@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * Description of grade
+ *
+ * @author annunzin
+ */
+class grade {
+    
+    
+    public static function calculerRang($capital,$zip){
+        
+        
+        
+    }
+    //put your code here
+}

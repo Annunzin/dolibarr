@@ -65,17 +65,26 @@ class Actionssimple
 
 		$error = 0; // Error counter
 		$myvalue = ''; // A result value
+                
+               
+                
 
-		if (in_array('contactcard', explode(':', $parameters['context'])))
-		{
-            
-            global $db,$langs;
-            $societe = new Societe($db);
-            $societe->fetch($object->socid);
-		  
-            echo '<tr>
-		  	<td>'.$langs->trans('Zip').'</td><td colspan="'.$parameters['colspan'].'">'.$societe->zip.'</td>
-		  </tr>';
+		if (in_array('thirdpartycard', explode(':', $parameters['context']))){
+                    
+                    global $db,$langs;
+                    $societe = new Societe($db);
+                    $capital = $object->capital;
+                    $zip = $this->cutZip($object->zip);
+                    
+                    
+                    
+                
+                
+                    $rang = $this->calculerRang($capital,$zip);
+                
+                    echo '<tr>
+                                <td>'.$langs->trans('Grade').'</td><td colspan="'.$parameters['colspan'].'">'.$rang.'</td>
+                          </tr>';
 		}
 
 		if (! $error)
@@ -89,4 +98,37 @@ class Actionssimple
 			return -1;
 		}
 	}
+        
+        function calculerRang($capital,$zip){
+            
+            global $db,$langs,$mysoc;
+            
+            
+            $mySocZip = $this->cutZip($mysoc->zip);
+
+            $tGrade = array('E','D','C','B','A');
+            
+            $pt = 0;
+            
+            if($$zip==$mySocZip){
+                
+                $pt++;
+            }
+            
+            if($capital>20000) $pt++;
+            if($capital>50000) $pt++;
+            if($capital>150000) $pt++;
+            
+            return $tGrade[$pt];
+
+          
+        }
+        
+        function cutZip($zip){
+            
+            $cut = substr($zip, 0,2);
+            
+            return $cut;
+            
+        }
 }
