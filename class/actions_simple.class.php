@@ -71,8 +71,9 @@ class Actionssimple
 
 		if (in_array('thirdpartycard', explode(':', $parameters['context']))){
                     
-                    global $db,$langs;
-                    $societe = new Societe($db);
+                    global $langs;
+                    $risque =  $object->array_options['options_risque'];
+
                     $capital = $object->capital;
                     $zip = $this->cutZip($object->zip);
                     
@@ -80,29 +81,27 @@ class Actionssimple
                     
                 
                 
-                    $rang = $this->calculerRang($capital,$zip);
+                    $rang = $this->calculerRang($risque,$capital,$zip);
                 
                     echo '<tr>
                                 <td>'.$langs->trans('Grade').'</td><td colspan="'.$parameters['colspan'].'">'.$rang.'</td>
                           </tr>';
 		}
+                
 
-		if (! $error)
-		{
+		if (! $error){
 			
 			return 0; // or return 1 to replace standard code
 		}
-		else
-		{
+		else{
 			$this->errors[] = 'Error message';
 			return -1;
 		}
 	}
         
-        function calculerRang($capital,$zip){
+        function calculerRang($risque,$capital,$zip){
             
             global $db,$langs,$mysoc;
-            
             
             $mySocZip = $this->cutZip($mysoc->zip);
 
@@ -119,6 +118,13 @@ class Actionssimple
             if($capital>50000) $pt++;
             if($capital>150000) $pt++;
             
+            if($risque>30) $pt--;  
+            if($risque>60) $pt--;  
+            if($risque>90) $pt--;  
+            if($risque==100) $pt=0;
+            
+            if($pt < 0)
+                $pt = 0;
             return $tGrade[$pt];
 
           
