@@ -73,7 +73,6 @@ class Actionssimple
                     
                     global $langs;
                     $risque =  $object->array_options['options_risque'];
-
                     $capital = $object->capital;
                     $zip = $this->cutZip($object->zip);
                     
