@@ -57,4 +57,3 @@ function _card(&$object,&$simple) {
 	llxFooter();	  
 		 	
 }
-
