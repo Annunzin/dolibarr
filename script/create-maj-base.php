@@ -14,6 +14,8 @@ global $db;
 dol_include_once('/core/class/extrafields.class.php');
 $extrafields = new ExtraFields($db);
 $res = $extrafields->addExtraField('risque','Risque','double',0,'10,2','societe');
+/* ajout d'un nom de pdg pour sco */
+$res = $extrafields->addExtraField('nompdg','Nompdg','varchar',0,'255','societe');
 
 dol_include_once('/simple/class/simple.class.php');
 
