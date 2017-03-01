@@ -59,7 +59,7 @@ class modsimple extends DolibarrModules
 		// Module label (no space allowed), used if translation string 'ModuleXXXName' not found (where XXX is value of numeric property 'numero' of module)
 		$this->name = preg_replace('/^mod/i','',get_class($this));
 		// Module description, used if translation string 'ModuleXXXDesc' not found (where XXX is value of numeric property 'numero' of module)
-		$this->description = "Description of module simple";
+		$this->description = "groupe Annuziata/carlo ajout d'une map pour les clients (pb de clef api)";
 		// Possible values for version are: 'development', 'experimental', 'dolibarr' or version
 		$this->version = '1.0';
 		// Key used in llx_const table to save module status enabled/disabled (where MYMODULE is value of property name of module in uppercase)
@@ -154,7 +154,7 @@ class modsimple extends DolibarrModules
 		//TODO à copier dans votre module
         $this->tabs = array(
 			'contact:+tab'.$this->numero.':Title'.$this->numero.':simple@simple::/simple/simple.php?fk_contact=__ID__',
-                        'thirdparty:+relation:Relation:simple@simple::/simple/relation.php?fk_soc=__ID__'
+                        'thirdparty:+relation:Map:simple@simple::/simple/relation.php?fk_soc=__ID__'
 
 		);
 		

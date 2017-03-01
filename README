@@ -25,3 +25,9 @@ Pré-requis : un serveur Apache installé, Dolibarr et Git
 	
 7. Allez dans class/actions_MonModule.class.php
 	- Dans la méthode formObjectOptions, faites ce qui est demandé (sachant qu'un var_dump() de $object peut vous être utile )
+
+Warning: But ajout d'une map pour l'adresse donnée pour les tiers. Ne fonctionnera pas à cause du système de clef api google
+Changlogs : 
+tab on thirdparty within a map that show the thirdparty's place.(FIXME)
+things did on tp.
+a new param called Nompdg (testing purpose).

@@ -44,7 +44,7 @@ function simpleAdminPrepareHead()
     // Show more tabs from modules
     // Entries must be declared in modules descriptor with line
     //$this->tabs = array(
-    //	'entity:+tabname:Title:@simple:/simple/mypage.php?id=__ID__'
+    //	'contact:+tabname1:mytab:simple@simple:/simple/mypage.php?id=__ID__'
     //); // to add new tab
     //$this->tabs = array(
     //	'entity:-tabname:Title:@simple:/simple/mypage.php?id=__ID__'

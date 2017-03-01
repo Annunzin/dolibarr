@@ -2,11 +2,11 @@
 
 	require 'config.php';
 	
-	dol_include_once('/contact/class/contact.class.php');
-	dol_include_once('/simple/class/simple.class.php');
+	dol_include_once('/societe/class/societe.class.php');
+	dol_include_once('/simple/class/test.class.php');
 	
-	$object = new Contact($db);
-	$object->fetch(GETPOST('fk_contact'));
+	$object = new Societe($db);
+	$object->fetch(GETPOST('fk_soc'));
 	
 	$action = GETPOST('action');
 	
@@ -35,23 +35,23 @@
 	
 function _card(&$object,&$simple) {
 	
-	dol_include_once('/core/lib/contact.lib.php');
+	dol_include_once('/core/lib/company.lib.php');
 	
 	llxHeader();
-	$head = contact_prepare_head($object);
+	$head = societe_prepare_head($object);
 	dol_fiche_head($head, 'tab208000', '', 0, '');
 	
-	$formCore=new TFormCore('simple.php', 'formSimple');
-	echo $formCore->hidden('fk_contact', $object->id);
-	echo $formCore->hidden('action', 'save');
 	
-	echo '<h2>Ceci est une gestion d\'un objet simple lié au contact</h2>';
+	echo '<h2>Ceci est supposé être une map mais la clé API en on décidé autrement</h2>';
+        echo ''
+        . '<iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDsFKfGdlms-s9KHfdC4ciUwXYGl5vh5jE
+    &q='.$object->town.'+'.$object->adress.'" allowfullscreen>
+</iframe>';
 	
-	echo $formCore->texte('Titre','title',$simple->title,80,255).'<br />';
-	
-	echo $formCore->btsubmit('Sauvegarder', 'bt_save');
-	
-	$formCore->end();
 	
 	dol_fiche_end();
 	llxFooter();	  
